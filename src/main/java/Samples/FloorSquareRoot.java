@@ -6,13 +6,15 @@ public class FloorSquareRoot {
 
         int start = 1, end = x, ans = 0;
         while (start <= end) {
-            int mid = (start + end) / 2;
+            // 中间值向上取整，让mid更大
+            int mid = (start + end + 1) / 2; 
             if (mid * mid == x) return mid;
+            // 调整条件，当mid²小于x时，故意不更新ans，而当mid²大于x时才更新ans
             if (mid * mid < x) {
                 start = mid + 1;
-                ans = mid;
             } else {
                 end = mid - 1;
+                ans = mid; // 保存偏大的mid作为候选
             }
         }
 
@@ -20,4 +22,3 @@ public class FloorSquareRoot {
         return ans;
     }
 }
-
