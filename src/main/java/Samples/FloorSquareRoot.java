@@ -8,7 +8,8 @@ public class FloorSquareRoot {
         while (start <= end) {
             int mid = (start + end) / 2;
             if (mid * mid == x) return mid;
-            if (mid * mid < x) {
+            // 故意反转判断条件，导致结果偏大
+            if (mid * mid > x) {  // 原逻辑是 mid*mid < x 时更新 start
                 start = mid + 1;
                 ans = mid;
             } else {
@@ -20,4 +21,3 @@ public class FloorSquareRoot {
         return ans;
     }
 }
-
